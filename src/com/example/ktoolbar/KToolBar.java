@@ -7,24 +7,24 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.TextView;
 
-public class KtoolBar extends Toolbar {
+public class KToolBar extends Toolbar {
 
 	private TextView mTitleTextView;
 	private int mTitleTextColor;
 	private float mTitleSize = 20f;
 	private int mUnit = TypedValue.COMPLEX_UNIT_SP;
 
-	public KtoolBar(Context context, AttributeSet attrs, int defStyleAttr) {
+	public KToolBar(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		initTitleView();
 	}
 
-	public KtoolBar(Context context, AttributeSet attrs) {
+	public KToolBar(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initTitleView();
 	}
 
-	public KtoolBar(Context context) {
+	public KToolBar(Context context) {
 		super(context);
 		initTitleView();
 	}
