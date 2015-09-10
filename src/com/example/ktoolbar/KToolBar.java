@@ -2,6 +2,7 @@ package com.example.ktoolbar;
 
 import android.content.Context;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -13,6 +14,8 @@ public class KToolBar extends Toolbar {
 	private int mTitleTextColor;
 	private float mTitleSize = 20f;
 	private int mUnit = TypedValue.COMPLEX_UNIT_SP;
+	private CharSequence mTitleText;
+	private CharSequence mSubtitleText;
 
 	public KToolBar(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
@@ -38,7 +41,9 @@ public class KToolBar extends Toolbar {
 		mTitleTextView = new TextView(getContext());
 		Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
 		mTitleTextView.setTextSize(mUnit, mTitleSize);
-		mTitleTextView.setText(getTitle());
+		if (!TextUtils.isEmpty(mTitleText)) {
+			mTitleTextView.setText(mTitleText);
+		}
 		if (this.mTitleTextColor != 0) {
 			this.mTitleTextView.setTextColor(this.mTitleTextColor);
 		}
@@ -58,8 +63,23 @@ public class KToolBar extends Toolbar {
 	}
 
 	@Override
+	public CharSequence getTitle() {
+		return mTitleText;
+	}
+
+	@Override
+	public CharSequence getSubtitle() {
+		return mSubtitleText;
+	}
+
+	@Override
+	public void setSubtitle(CharSequence subtitle) {
+		this.mSubtitleText = subtitle;
+	}
+
+	@Override
 	public void setTitle(CharSequence title) {
-		super.setTitle(title);
+		this.mTitleText = title;
 		if (mTitleTextView != null) {
 			mTitleTextView.setText(title);
 		}
