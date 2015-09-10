@@ -22,9 +22,10 @@ public class MainActivity extends ActionBarActivity {
 //		getActionBar().
 		Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
 //		toolbar.setLogo(R.drawable.ic_launcher);
-		toolbar.setTitleTextColor( R.color.background_material_dark);
+//		toolbar.setTitleTextColor( R.color.primary_text_default_material_light);
 //		toolbar.setTitleTextAppearance(context, resId);
-		toolbar.setNavigationIcon(R.drawable.ic_launcher);
+//		toolbar.setNavigationIcon(R.drawable.ic_launcher);            
+//		toolbar.
 //		toolbar.set
 //		toolbar.setSubtitle("dddddddddddddd");
 		toolbar.getMeasuredWidth();
@@ -35,20 +36,24 @@ public class MainActivity extends ActionBarActivity {
 //		toolbar.setMenu(menu, outerPresenter);
 	
 //		v.setOnClickListener((v)->c);
-		 
+//		toolbar.setn
 		setSupportActionBar(toolbar);
 		toolbar.setMotionEventSplittingEnabled(true);
 		toolbar.setMinimumHeight(getSupportActionBar().getHeight());
 //		toolbar.setTitle(arg0);
+//		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
-		System.out.println(toolbar.getChildCount());
-		int imagew=toolbar.getChildAt(0).getWidth();
-		int titlew=toolbar.getChildAt(1).getWidth();
-		Toolbar.LayoutParams layoutParams=(android.support.v7.widget.Toolbar.LayoutParams) toolbar.getChildAt(1).getLayoutParams();
-		layoutParams.gravity=Gravity.CENTER;
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		getSupportActionBar().setDisplayUseLogoEnabled(true);
+//		System.out.println(toolbar.getChildCount());
+//		int imagew=toolbar.getChildAt(0).getWidth();
+//		int titlew=toolbar.getChildAt(1).getWidth();
+//		Toolbar.LayoutParams layoutParams=(android.support.v7.widget.Toolbar.LayoutParams) toolbar.getChildAt(1).getLayoutParams();
+//		layoutParams.gravity=Gravity.CENTER;
 //		toolbar.getChildAt(1).setLayoutParams(new LayoutParams(100, 80));
-		System.out.println("imagew="+imagew );
-		System.out.println("titlew="+titlew );
+//		System.out.println("imagew="+imagew );
+//		System.out.println("titlew="+titlew );
 //	int idd= android.support.r
 	}
 
@@ -60,6 +65,7 @@ public class MainActivity extends ActionBarActivity {
 //		menu1.
 		return true;
 	}
+	 
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,6 +76,18 @@ public class MainActivity extends ActionBarActivity {
 //		if (id == R.id.action_settings) {
 //			return true;
 		// }
+		switch (id) {
+		case R.id.home:
+			System.out.println(" R.id.home:");
+			break;
+		case R.id.homeAsUp:
+			System.out.println(" R.id.homeAsUp:");
+			break;
+
+		default:
+			System.out.println(" id===="+id);
+			break;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 }

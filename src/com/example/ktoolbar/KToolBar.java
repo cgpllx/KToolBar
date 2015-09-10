@@ -1,6 +1,8 @@
 package com.example.ktoolbar;
 
 import android.content.Context;
+import android.support.annotation.StyleRes;
+import android.support.v7.internal.widget.TintTypedArray;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -11,43 +13,49 @@ import android.widget.TextView;
 public class KToolBar extends Toolbar {
 
 	private TextView mTitleTextView;
+	private TextView mSubtitleTextView;
+
 	private int mTitleTextColor;
+	private int mSubtitleTextColor;
+
 	private float mTitleSize = 20f;
 	private int mUnit = TypedValue.COMPLEX_UNIT_SP;
+
 	private CharSequence mTitleText;
 	private CharSequence mSubtitleText;
 
+	private int mTitleTextAppearance;
+	private int mSubtitleTextAppearance;
+
 	public KToolBar(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		initTitleView();
+		init(context, attrs, defStyleAttr);
 	}
 
 	public KToolBar(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		initTitleView();
+		this(context, attrs, R.attr.toolbarStyle);
 	}
 
 	public KToolBar(Context context) {
-		super(context);
-		initTitleView();
+		this(context, null);
 	}
 
-	@Override
-	protected LayoutParams generateDefaultLayoutParams() {
-		return new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-	}
+	private void init(Context context, AttributeSet attrs, int defStyleAttr) {
 
-	private void initTitleView() {
-		mTitleTextView = new TextView(getContext());
-		Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-		mTitleTextView.setTextSize(mUnit, mTitleSize);
-		if (!TextUtils.isEmpty(mTitleText)) {
-			mTitleTextView.setText(mTitleText);
+		TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs, R.styleable.Toolbar, defStyleAttr, 0);
+
+		this.mTitleTextAppearance = a.getResourceId(R.styleable.Toolbar_titleTextAppearance, 0);
+		if (this.mTitleTextAppearance != 0) {
+			setTitleTextAppearance(context, mTitleTextAppearance);
 		}
-		if (this.mTitleTextColor != 0) {
-			this.mTitleTextView.setTextColor(this.mTitleTextColor);
+
+		this.mSubtitleTextAppearance = a.getResourceId(R.styleable.Toolbar_subtitleTextAppearance, 0);
+		if (this.mSubtitleTextAppearance != 0) {
+			setSubtitleTextAppearance(context, mSubtitleTextAppearance);
 		}
-		addView(mTitleTextView, lp);
+
+		a.recycle();
+
 	}
 
 	public void setTitleSize(float size) {
@@ -74,15 +82,51 @@ public class KToolBar extends Toolbar {
 
 	@Override
 	public void setSubtitle(CharSequence subtitle) {
+		super.setSubtitle(subtitle);
+		if (!TextUtils.isEmpty(subtitle)) {
+			if (this.mSubtitleTextView == null) {
+				Context context = getContext();
+				this.mSubtitleTextView = new TextView(context);
+				this.mSubtitleTextView.setSingleLine();
+				this.mSubtitleTextView.setEllipsize(TextUtils.TruncateAt.END);
+				if (this.mSubtitleTextAppearance != 0) {
+					this.mSubtitleTextView.setTextAppearance(context, this.mSubtitleTextAppearance);
+				}
+				if (this.mSubtitleTextColor != 0) {
+					this.mSubtitleTextView.setTextColor(this.mSubtitleTextColor);
+				}
+			}
+		}
+		if (this.mSubtitleTextView != null) {
+			this.mSubtitleTextView.setText(subtitle);
+		}
 		this.mSubtitleText = subtitle;
 	}
 
 	@Override
 	public void setTitle(CharSequence title) {
-		this.mTitleText = title;
-		if (mTitleTextView != null) {
-			mTitleTextView.setText(title);
+		super.setTitle(title);
+		if (!TextUtils.isEmpty(title)) {
+			if (this.mTitleTextView == null) {
+				Context context = getContext();
+				this.mTitleTextView = new TextView(context);
+				this.mTitleTextView.setSingleLine();
+				this.mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
+				if (this.mTitleTextAppearance != 0) {
+					this.mTitleTextView.setTextAppearance(context, this.mTitleTextAppearance);
+				}
+				if (this.mTitleTextColor != 0) {
+					this.mTitleTextView.setTextColor(this.mTitleTextColor);
+				}
+			}
+			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
+			addView(mTitleTextView, lp);
 		}
+		if (this.mTitleTextView != null) {
+			this.mTitleTextView.setText(title);
+		}
+		this.mTitleText = title;
+
 	}
 
 	@Override
@@ -94,4 +138,15 @@ public class KToolBar extends Toolbar {
 		}
 	}
 
+	public void setSubtitleTextAppearance(Context context, @StyleRes int resId) {
+		super.setSubtitleTextAppearance(context, resId);
+		if (this.mSubtitleTextView != null)
+			this.mSubtitleTextView.setTextAppearance(context, resId);
+	}
+
+	public void setTitleTextAppearance(Context context, @StyleRes int resId) {
+		super.setTitleTextAppearance(context, resId);
+		if (this.mTitleTextView != null)
+			this.mTitleTextView.setTextAppearance(context, resId);
+	}
 }
