@@ -3,6 +3,7 @@ package com.example.ktoolbar;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -11,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -28,10 +29,10 @@ public class MainActivity extends ActionBarActivity {
 //		toolbar.
 //		toolbar.set
 //		toolbar.setSubtitle("dddddddddddddd");
-		toolbar.getMeasuredWidth();
-//		toolbar.setti
-		View v=findViewById(R.id.action_bar
-				);
+//		toolbar.getMeasuredWidth();
+////		toolbar.setti
+//		View v=findViewById(R.id.action_bar
+//				);
 //		new MenuBuilder(getApplicationContext()).
 //		toolbar.setMenu(menu, outerPresenter);
 	
@@ -41,11 +42,13 @@ public class MainActivity extends ActionBarActivity {
 		toolbar.setMotionEventSplittingEnabled(true);
 		toolbar.setMinimumHeight(getSupportActionBar().getHeight());
 //		toolbar.setTitle(arg0);
-//		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+//		getSupportActionBar().setLogo(R.drawable.ic_launcher);
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setDisplayUseLogoEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 //		System.out.println(toolbar.getChildCount());
 //		int imagew=toolbar.getChildAt(0).getWidth();
 //		int titlew=toolbar.getChildAt(1).getWidth();
@@ -77,12 +80,12 @@ public class MainActivity extends ActionBarActivity {
 //			return true;
 		// }
 		switch (id) {
-		case R.id.home:
-			System.out.println(" R.id.home:");
-			break;
-		case R.id.homeAsUp:
-			System.out.println(" R.id.homeAsUp:");
-			break;
+//		case R.id.home:
+//			System.out.println(" R.id.home:");
+//			break;
+//		case R.id.homeAsUp:
+//			System.out.println(" R.id.homeAsUp:");
+//			break;
 
 		default:
 			System.out.println(" id===="+id);
