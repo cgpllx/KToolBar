@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class KToolBar extends Toolbar {
@@ -96,6 +98,9 @@ public class KToolBar extends Toolbar {
 					this.mSubtitleTextView.setTextColor(this.mSubtitleTextColor);
 				}
 			}
+			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+			// addView(mSubtitleTextView, lp);
+			addSystemView(mSubtitleTextView, lp);
 		}
 		if (this.mSubtitleTextView != null) {
 			this.mSubtitleTextView.setText(subtitle);
@@ -119,14 +124,30 @@ public class KToolBar extends Toolbar {
 					this.mTitleTextView.setTextColor(this.mTitleTextColor);
 				}
 			}
-			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-			addView(mTitleTextView, lp);
+			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
+			// addView(mTitleTextView, lp);
+			addSystemView(mTitleTextView, lp);
 		}
 		if (this.mTitleTextView != null) {
 			this.mTitleTextView.setText(title);
 		}
 		this.mTitleText = title;
 
+	}
+
+	private LinearLayout titleLayout;
+
+	private void addSystemView(View child, LayoutParams params) {
+		if (titleLayout == null) {
+			titleLayout = new LinearLayout(getContext());
+			titleLayout.setOrientation(LinearLayout.VERTICAL);
+			titleLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER);
+			addView(titleLayout, lp);
+		}
+		if (child.getParent() == null) {
+			titleLayout.addView(child, params);
+		}
 	}
 
 	@Override

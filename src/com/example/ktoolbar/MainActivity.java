@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 //		toolbar.setTitle(arg0);
 		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
 //		getSupportActionBar().setLogo(R.drawable.ic_launcher);
-		getSupportActionBar().setDisplayShowTitleEnabled(true);
+//		getSupportActionBar().setDisplayShowTitleEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setDisplayUseLogoEnabled(true);
