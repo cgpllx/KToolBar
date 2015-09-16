@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
 <!--     <android.support.v7.widget.Toolbar -->
-    <com.example.ktoolbar.KToolBar
+    <com.kubeiwu.customview.widget.KToolBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
