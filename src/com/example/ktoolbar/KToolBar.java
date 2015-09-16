@@ -84,7 +84,6 @@ public class KToolBar extends Toolbar {
 
 	@Override
 	public void setSubtitle(CharSequence subtitle) {
-		// super.setSubtitle(subtitle);
 		if (!TextUtils.isEmpty(subtitle)) {
 			if (this.mSubtitleTextView == null) {
 				Context context = getContext();
@@ -99,7 +98,6 @@ public class KToolBar extends Toolbar {
 				}
 			}
 			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-			// addView(mSubtitleTextView, lp);
 			addSystemView(mSubtitleTextView, lp);
 		}
 		if (this.mSubtitleTextView != null) {
@@ -110,7 +108,6 @@ public class KToolBar extends Toolbar {
 
 	@Override
 	public void setTitle(CharSequence title) {
-		// super.setTitle(title);
 		if (!TextUtils.isEmpty(title)) {
 			if (this.mTitleTextView == null) {
 				Context context = getContext();
@@ -125,7 +122,6 @@ public class KToolBar extends Toolbar {
 				}
 			}
 			Toolbar.LayoutParams lp = new Toolbar.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
-			// addView(mTitleTextView, lp);
 			addSystemView(mTitleTextView, lp);
 		}
 		if (this.mTitleTextView != null) {
