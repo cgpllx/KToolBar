@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 		toolbar.setMotionEventSplittingEnabled(true);
 		toolbar.setMinimumHeight(getSupportActionBar().getHeight());
 //		toolbar.setTitle(arg0);
-		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+//		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
 //		getSupportActionBar().setLogo(R.drawable.ic_launcher);
 //		getSupportActionBar().setDisplayShowTitleEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

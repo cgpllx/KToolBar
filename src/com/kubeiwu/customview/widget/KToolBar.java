@@ -1,9 +1,5 @@
 package com.kubeiwu.customview.widget;
 
-import com.example.ktoolbar.R;
-import com.example.ktoolbar.R.attr;
-import com.example.ktoolbar.R.styleable;
-
 import android.content.Context;
 import android.support.annotation.StyleRes;
 import android.support.v7.internal.widget.TintTypedArray;
@@ -15,6 +11,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.ktoolbar.R;
 
 public class KToolBar extends Toolbar {
 
